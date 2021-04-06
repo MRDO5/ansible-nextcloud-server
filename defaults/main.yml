@@ -1,6 +1,6 @@
 ---
 
-php-install:
+php_install:
    - php
    - php-cli
    - php-ctype
@@ -18,7 +18,6 @@ php-install:
    - php-fileinfo
    - php-bz2
    - php-intl
-   - php-redis
    - php-gd
    - php-xmlreader
    - php-xmlwriter

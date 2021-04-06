@@ -4,11 +4,11 @@
   include: nginx-install.yml
 
 - name: Prerequisites instalation
-  include: php-install.main
+  include: php-install.yml
 
 - name: Download and install nextcloud
-  ansible.builtin.unarchive:
-    src: https://download.nextcloud.com/server/releases/nextcloud-"{{ nextcloud_version }}".zip
+  unarchive:
+    src: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
     dest: /var/www/nextcloud/
     owner: nginx
     group: nginx
@@ -17,10 +17,10 @@
 - name: Selinux configuration
   include: selinux-config.yml
 
-- name: Configuration php.ini 
+#- name: Configuration php.ini 
 
 
-- name: Add nginx configuration for nextcloud
+#- name: Add nginx configuration for nextcloud
 
 
 
