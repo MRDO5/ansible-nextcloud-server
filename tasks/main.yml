@@ -1,0 +1,27 @@
+---
+
+- name: Install nginx
+  include: nginx-install.yml
+
+- name: Prerequisites instalation
+  include: php-install.main
+
+- name: Download and install nextcloud
+  ansible.builtin.unarchive:
+    src: https://download.nextcloud.com/server/releases/nextcloud-"{{ nextcloud_version }}".zip
+    dest: /var/www/nextcloud/
+    owner: nginx
+    group: nginx
+    mode: 0750
+
+- name: Selinux configuration
+  include: selinux-config.yml
+
+- name: Configuration php.ini 
+
+
+- name: Add nginx configuration for nextcloud
+
+
+
+...

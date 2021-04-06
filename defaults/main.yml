@@ -1,0 +1,30 @@
+---
+
+php-install:
+   - php
+   - php-cli
+   - php-ctype
+   - php-curl
+   - php-dom
+   - php-iconv
+   - php-json
+   - php-libxml
+   - php-mbstring
+   - php-openssl
+   - php-posix
+   - php-session
+   - php-zip
+   - php-zlib
+   - php-fileinfo
+   - php-bz2
+   - php-intl
+   - php-redis
+   - php-gd
+   - php-xmlreader
+   - php-xmlwriter
+   - php-simplexml
+   - php-redis
+
+nextcloud_version: 21.0.0
+
+...
