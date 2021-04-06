@@ -10,6 +10,7 @@
   unarchive:
     src: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
     dest: /var/www/nextcloud/
+    remote_src: yes
     owner: nginx
     group: nginx
     mode: 0750
