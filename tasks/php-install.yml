@@ -1,10 +1,22 @@
 ---
 
+- name: Install epel-release
+  yum:
+    name: epel-release
+    state: present
+    update_cache: yes
+
+- name: Install the remi repo
+  yum:
+    name: https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+    enabled: yes
+
 - name: Install php
   yum:
-    name: "{{item}}"
+    name: "{{ php_install }}"
     state: present
-  with_items:
-      - "{{ php_install }}"
+  #with_items:
+  #    - "{{ php_install }}"
 
 ...

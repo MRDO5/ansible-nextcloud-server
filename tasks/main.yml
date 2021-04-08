@@ -6,6 +6,11 @@
 - name: Prerequisites instalation
   include: php-install.yml
 
+- name: Install unzip
+  yum:
+    name: unzip
+    state: present
+
 - name: Download and install nextcloud
   unarchive:
     src: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
