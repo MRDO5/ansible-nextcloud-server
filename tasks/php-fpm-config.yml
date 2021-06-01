@@ -1,0 +1,33 @@
+---
+
+- name: Change in php-fpm.config user name 
+  ansible.builtin.lineinfile:
+    path: /etc/php-fpm.d/www.conf
+    regexp: '^user'
+    line: user = nginx
+
+- name: Change in php-fpm.config group name 
+  ansible.builtin.lineinfile:
+    path: /etc/php-fpm.d/www.conf
+    regexp: '^group'
+    line: group = nginx
+
+#- name: Change in php-fpm.config env[PATH]
+#  ansible.builtin.lineinfile:
+#    path: /etc/php-fpm.d/www.conf
+#    regexp: '^\;env\[PATH\]'
+#    line: env[PATH] = /usr/local/bin:/usr/bin:/bin
+
+- name: Change in php-fpm.config env
+  blockinfile:
+    path: /etc/php-fpm.d/www.conf
+    marker: ";<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    insertafter: '^\;env\[TEMP\]'
+    block: |
+        env[HOSTNAME] = $HOSTNAME
+        env[PATH] = /usr/local/bin:/usr/bin:/bin
+        env[TMP] = /tmp
+        env[TMPDIR] = /tmp
+        env[TEMP] = /tmp
+
+...

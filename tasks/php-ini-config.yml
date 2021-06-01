@@ -1,0 +1,9 @@
+---
+
+- name: Change memory limit in php.ini
+  ansible.builtin.lineinfile:
+    path: /etc/php.ini
+    regexp: '^memory_limit'
+    line: memory_limit = 512M
+
+...

@@ -1,0 +1,15 @@
+---
+
+- name: permit traffic in default zone for http service
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+
+- name: permit traffic in default zone for https service
+  firewalld:
+    service: https
+    permanent: yes
+    state: enabled
+
+...

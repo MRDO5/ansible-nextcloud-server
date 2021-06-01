@@ -1,8 +1,5 @@
 ---
 
-- name: Install nginx
-  include: nginx-install.yml
-
 - name: Prerequisites instalation
   include: php-install.yml
 
@@ -11,23 +8,43 @@
     name: unzip
     state: present
 
+- name: Install nginx and configuration
+  include: nginx-install-config.yml
+
 - name: Download and install nextcloud
   unarchive:
     src: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
-    dest: /var/www/nextcloud/
+    #src: "https://download.nextcloud.com/server/releases/latest-{{ nextcloud_version }}.zip"
+    dest: /var/www/
     remote_src: yes
     owner: nginx
     group: nginx
-    mode: 0750
 
 - name: Selinux configuration
   include: selinux-config.yml
 
-#- name: Configuration php.ini 
+- name: php ini configuration
+  include: php-ini-config.yml
 
+- name: php fpm configuration
+  include: php-fpm-config.yml
 
-#- name: Add nginx configuration for nextcloud
+- name: php opcache configuration
+  include: php-opcache-config.yml
 
+- name: Recursively change ownership of a directory
+  ansible.builtin.file:
+    path: /var/lib/php/session/
+    owner: nginx
+    group: nginx
+    state: directory
+    recurse: yes
+
+- name: firewall Configuration
+  include: firewall-config.yml
+
+- name: redis Configuration
+  include: redis-config.yml
 
 
 ...

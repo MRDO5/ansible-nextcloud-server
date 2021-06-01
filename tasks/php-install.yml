@@ -10,12 +10,17 @@
   yum:
     name: https://rpms.remirepo.net/enterprise/remi-release-7.rpm
     state: present
-    enabled: yes
+
+- name: Remove repository remi-php54
+  yum_repository:
+    name: remi-php54
+    state: absent
 
 - name: Install php
   yum:
     name: "{{ php_install }}"
     state: present
+    enablerepo: "remi-php73"
   #with_items:
   #    - "{{ php_install }}"
 
