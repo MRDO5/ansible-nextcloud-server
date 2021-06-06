@@ -1,16 +1,21 @@
 ---
 
-- name: Add redis configurtion in config.php
-  blockinfile:
-    path: /var/www/nextcloud/config/config.php
-    #marker: ";<!-- {mark} ANSIBLE MANAGED BLOCK -->"
-    insertafter: '^installed'
-    block: |
-        'memcache.local' => '\OC\Memcache\Redis',
-        'memcache.locking' => '\OC\Memcache\Redis',
-        'redis' => array (
-           'host'     => '127.0.0.1',
-           'port'     => 6379,
-        ),
+- name: Install redis
+  yum:
+    name: redis
+    state: present
+
+# - name: Add redis configurtion in config.php
+#   blockinfile:
+#     path: /var/www/nextcloud/config/config.php
+#     #marker: ";<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+#     insertafter: '^installed'
+#     block: |
+#         'memcache.local' => '\OC\Memcache\Redis',
+#         'memcache.locking' => '\OC\Memcache\Redis',
+#         'redis' => array (
+#            'host'     => '127.0.0.1',
+#            'port'     => 6379,
+#         ),
 
 ...

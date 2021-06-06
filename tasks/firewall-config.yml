@@ -4,12 +4,14 @@
   firewalld:
     service: http
     permanent: yes
+    immediate: yes
     state: enabled
 
 - name: permit traffic in default zone for https service
   firewalld:
     service: https
     permanent: yes
+    immediate: yes
     state: enabled
 
 ...

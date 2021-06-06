@@ -6,22 +6,35 @@
     state: present
     update_cache: yes
 
-- name: Install the remi repo
-  yum:
-    name: https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-    state: present
+# - name: Install the remi repo
+#   yum:
+#     name: https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+#     state: present
 
-- name: Remove repository remi-php54
+# - name: Remove repository remi-php54
+#   yum_repository:
+#     name: remi-php54
+#     state: absent
+
+- name: Add repository remi-php73
   yum_repository:
-    name: remi-php54
-    state: absent
+    name: remi-php73
+    description: Remi's PHP 7.3 RPM repository for Enterprise Linux 7 - $basearch
+    mirrorlist: http://cdn.remirepo.net/enterprise/7/php73/mirror
+    enabled: yes
+    gpgcheck: no
+    #gpgkey:
+    owner: root
+    group: root
+    mode: 0644
+    state: present
 
 - name: Install php
   yum:
     name: "{{ php_install }}"
     state: present
-    enablerepo: "remi-php73"
-  #with_items:
-  #    - "{{ php_install }}"
+## enablerepo: "remi-php73"
+#with_items:
+#    - "{{ php_install }}"
 
 ...

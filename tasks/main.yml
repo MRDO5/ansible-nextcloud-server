@@ -13,8 +13,8 @@
 
 - name: Download and install nextcloud
   unarchive:
-    src: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
     #src: "https://download.nextcloud.com/server/releases/latest-{{ nextcloud_version }}.zip"
+    src: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
     dest: /var/www/
     remote_src: yes
     owner: nginx
@@ -46,5 +46,11 @@
 - name: redis Configuration
   include: redis-config.yml
 
+- name: Cron job for Background jobs to call the cron.php file every 5 minutes
+  cron:
+    name: "call the cron.php file for nextcloud"
+    user: nginx
+    minute: "*/5"
+    job: "php -f /var/www/nextcloud/cron.php"
 
 ...
