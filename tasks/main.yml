@@ -52,5 +52,9 @@
     user: nginx
     minute: "*/5"
     job: "php -f /var/www/nextcloud/cron.php"
+  notify:
+     - restart redis
+     - restart php-fpm
+     - restart nginx
 
 ...
