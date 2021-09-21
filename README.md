@@ -17,26 +17,25 @@ After install DB you need create for role install file like this:
 example: install-nextcloud.yml
 
 
+```
 ---
-
   - hosts: centos
     gather_facts: yes
-    become: yes
+		become: yes
 
     roles:
       - nextcloud
 ...
-
+```
 
 and have inventory file where you write information about your host or server where you want make install:
 
 example:  inventory.yml
-
-
+```
 [localserver]
 localhost
 
 [centos]
 nextcloud  ansible_host=192.168.88.235 ansible_port=22 ansible_user=deploy
-
+```
 
