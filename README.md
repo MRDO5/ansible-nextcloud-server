@@ -38,7 +38,7 @@ localhost
 [centos]
 nextcloud  ansible_host=192.168.88.235 ansible_port=22 ansible_user=deploy
 ```
-For working ssl for your site you need change ssl certificates names in files directory and add name files in file nginx-install-config.yml in section
+For working ssl for your site you need change ssl certificates in files directory and add name files in file nginx-install-config.yml in section
 
 ```
 - name: Copy crt file for ngin
