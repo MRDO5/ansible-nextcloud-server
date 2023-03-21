@@ -1,17 +1,17 @@
 ---
 
 - name: restart nginx
-  systemd:
+  ansible.builtin.systemd:
      name: nginx
      state: restarted
 
 - name: restart php-fpm
-  systemd:
+  ansible.builtin.systemd:
      name: php-fpm
      state: restarted
 
 - name: restart redis
-  systemd:
+  ansible.builtin.systemd:
      name: redis
      state: restarted
 

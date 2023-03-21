@@ -1,6 +1,7 @@
 
 upstream php-handler {
-    server 127.0.0.1:9000;
+    server unix:/run/php-fpm/www.sock;
+    #server 127.0.0.1:9000;
     #server unix:/var/run/php/php7.4-fpm.sock;
 }
 

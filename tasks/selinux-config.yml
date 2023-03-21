@@ -1,7 +1,7 @@
 ---
 
 - name: Put SELinux in permissive mode.
-  selinux:
+  ansible.builtin.selinux:
     policy: targeted
     state: permissive
 

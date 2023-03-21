@@ -6,6 +6,24 @@
     regexp: '^opcache.enable'
     line: opcache.enable=1
 
+- name: Change php opcache config opcache.revalidate_freq
+  ansible.builtin.lineinfile:
+    path: /etc/php.d/10-opcache.ini
+    regexp: '^\;opcache.revalidate_freq'
+    line: opcache.revalidate_freq=60
+
+- name: Change php opcache config opcache.save_comments
+  ansible.builtin.lineinfile:
+    path: /etc/php.d/10-opcache.ini
+    regexp: '^\;opcache.save_comments'
+    line: opcache.save_comments=1
+
+- name: Change php opcache config opcache.validate_timestamps
+  ansible.builtin.lineinfile:
+    path: /etc/php.d/10-opcache.ini
+    regexp: '^\;opcache.validate_timestamps'
+    line: opcache.validate_timestamps=0
+
 - name: Change php opcache config opcache.memory_consumption
   ansible.builtin.lineinfile:
     path: /etc/php.d/10-opcache.ini
@@ -23,17 +41,5 @@
     path: /etc/php.d/10-opcache.ini
     regexp: '^opcache.max_accelerated_files'
     line: opcache.max_accelerated_files=10000
-
-- name: Change php opcache config opcache.revalidate_freq
-  ansible.builtin.lineinfile:
-    path: /etc/php.d/10-opcache.ini
-    regexp: '^\;opcache.revalidate_freq'
-    line: opcache.revalidate_freq=1
-
-- name: Change php opcache config opcache.save_comments
-  ansible.builtin.lineinfile:
-    path: /etc/php.d/10-opcache.ini
-    regexp: '^\;opcache.save_comments'
-    line: opcache.save_comments=1
 
 ...

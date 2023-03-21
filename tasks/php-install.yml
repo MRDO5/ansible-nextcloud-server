@@ -1,7 +1,7 @@
 ---
 
 - name: Install epel-release
-  yum:
+  ansible.builtin.yum:
     name: epel-release
     state: present
     update_cache: yes
@@ -16,25 +16,38 @@
 #     name: remi-php54
 #     state: absent
 
-- name: Add repository remi-php73
-  yum_repository:
-    name: remi-php73
-    description: Remi's PHP 7.3 RPM repository for Enterprise Linux 7 - $basearch
-    mirrorlist: http://cdn.remirepo.net/enterprise/7/php73/mirror
-    enabled: yes
-    gpgcheck: no
-    #gpgkey:
-    owner: root
-    group: root
-    mode: 0644
+# - name: Add repository remi-php8.1
+#   ansible.builtin.yum_repository:
+#     name: remi-php8.1
+#     description: Remi's PHP 8.1 RPM repository for Enterprise Linux 9 - $basearch
+#     #baseurl: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+#     mirrorlist: http://cdn.remirepo.net/enterprise/7/php81/mirror
+#     #mirrorlist: http://cdn.remirepo.net/enterprise/7/php73/mirror
+#     enabled: yes
+#     gpgcheck: no
+#     #gpgkey:
+#     owner: root
+#     group: root
+#     mode: 0644
+#     state: present
+
+- name: Add repository remi-php8.1
+  ansible.builtin.dnf:
+    name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
     state: present
+    disable_gpg_check: true
 
 - name: Install php
-  yum:
+  ansible.builtin.dnf:
     name: "{{ php_install }}"
     state: present
-## enablerepo: "remi-php73"
-#with_items:
-#    - "{{ php_install }}"
+
+# - name: Install php
+#   ansible.builtin.yum:
+#     name: "{{ php_install }}"
+#     state: present
+# ## enablerepo: "remi-php73"
+# #with_items:
+# #    - "{{ php_install }}"
 
 ...

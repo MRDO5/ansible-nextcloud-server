@@ -1,7 +1,7 @@
 ---
 
 - name: Install redis
-  yum:
+  ansible.builtin.yum:
     name: redis
     state: present
 
@@ -11,11 +11,24 @@
 #     #marker: ";<!-- {mark} ANSIBLE MANAGED BLOCK -->"
 #     insertafter: '^installed'
 #     block: |
-#         'memcache.local' => '\OC\Memcache\Redis',
-#         'memcache.locking' => '\OC\Memcache\Redis',
-#         'redis' => array (
-#            'host'     => '127.0.0.1',
-#            'port'     => 6379,
-#         ),
+        # 'memcache.local' => '\OC\Memcache\Redis',
+        # 'memcache.locking' => '\OC\Memcache\Redis',
+        # 'redis' => array (
+        #    'host'     => '127.0.0.1',
+        #    'port'     => 6379,
+        # ),
+
+#   'default_phone_region' => 'US',
+#   'overwrite.cli.url' => 'https://next.danielyan.com/',
+#   'htaccess.RewriteBase' => '/',
+#   'memcache.local' => '\OC\Memcache\Redis',
+#   'memcache.locking' => '\OC\Memcache\Redis',
+#   'redis' => array (
+#       'host' => '127.0.0.1',
+#       'port'     => 6379,
+#   ),
+# );
+
+
 
 ...

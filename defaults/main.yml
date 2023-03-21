@@ -2,7 +2,7 @@
 
 php_install:
     - php
-#    - php-cli
+    - php-cli
     - php-ctype
     - php-curl
     - php-dom
@@ -17,6 +17,7 @@ php_install:
     - php-zlib
     - php-fileinfo
     - php-bz2
+    - php-intl
     - php-gd
     - php-xmlreader
     - php-xmlwriter
@@ -25,12 +26,11 @@ php_install:
     - php-fpm
     - php-gmp
     - php-imagick
-    - php-intl
-    - php-mysql
+    - php-mysqlnd
     - php-bcmath
     - php-opcache
+    - php-sodium
 
-#nextcloud_version: 21.0.2
-nextcloud_version: 22.1.0
+nextcloud_version: 25.0.4
 
 ...

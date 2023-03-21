@@ -1,14 +1,14 @@
 ---
 
 - name: permit traffic in default zone for http service
-  firewalld:
+  ansible.builtin.firewalld:
     service: http
     permanent: yes
     immediate: yes
     state: enabled
 
 - name: permit traffic in default zone for https service
-  firewalld:
+  ansible.builtin.firewalld:
     service: https
     permanent: yes
     immediate: yes

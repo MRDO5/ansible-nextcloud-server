@@ -4,15 +4,18 @@
   include: php-install.yml
 
 - name: Install unzip
-  yum:
+  ansible.builtin.yum:
     name: unzip
     state: present
+
+- name: redis Configuration
+  include: redis-config.yml
 
 - name: Install nginx and configuration
   include: nginx-install-config.yml
 
 - name: Download and install nextcloud
-  unarchive:
+  ansible.builtin.unarchive:
     #src: "https://download.nextcloud.com/server/releases/latest-{{ nextcloud_version }}.zip"
     src: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
     dest: /var/www/
@@ -43,11 +46,8 @@
 - name: firewall Configuration
   include: firewall-config.yml
 
-- name: redis Configuration
-  include: redis-config.yml
-
 - name: Cron job for Background jobs to call the cron.php file every 5 minutes
-  cron:
+  ansible.builtin.cron:
     name: "call the cron.php file for nextcloud"
     user: nginx
     minute: "*/5"

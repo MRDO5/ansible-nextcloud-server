@@ -19,7 +19,7 @@
 #    line: env[PATH] = /usr/local/bin:/usr/bin:/bin
 
 - name: Change in php-fpm.config env
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /etc/php-fpm.d/www.conf
     marker: ";<!-- {mark} ANSIBLE MANAGED BLOCK -->"
     insertafter: '^\;env\[TEMP\]'
